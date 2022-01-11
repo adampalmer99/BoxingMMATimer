@@ -9,26 +9,36 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let trainingTimes = ["Boxing": 180, "MMA": 300]
-    
-    var secondsRemaining = 60
-
-    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
+    let trainingTimes = ["Boxing": 3, "MMA": 5]
+    var timer = Timer()
+    var totalTime = 0
+    var secondsPassed = 0
 
     @IBAction func TimerSelected(_ sender: UIButton) {
         
+        timer.invalidate()
         let roundChoice = sender.currentTitle! // Boxing, MMA
+        totalTime = trainingTimes[roundChoice]!
+        progressBar.progress = 0.0
+        secondsPassed = 0
+        titleLabel.text = roundChoice
         
-        secondsRemaining = trainingTimes[roundChoice]!
-        
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+       timer =  Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     //@objc is objective c, #selector comes from objective c
     @objc func updateTimer() {
-        if secondsRemaining > 0 {
-            print("\(secondsRemaining) seconds")
-            secondsRemaining -= 1
+        if secondsPassed < totalTime {
+            
+            secondsPassed += 1
+            progressBar.progress = Float(secondsPassed) / Float(totalTime)
+            
+                    } else {
+            timer.invalidate()
+            titleLabel.text = "End of the round!"
+            titleLabel.textColor = .red
         }
     }
 

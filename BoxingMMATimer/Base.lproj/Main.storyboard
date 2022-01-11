@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,17 +43,36 @@
                                 <rect key="frame" x="24" y="479" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a workout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="hKo-d3-8lK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a workout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="hKo-d3-8lK">
                                 <rect key="frame" x="63" y="169" width="248" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mcA-mQ-ecj">
+                                <rect key="frame" x="0.0" y="331" width="375" height="6"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="bEl-9f-B8W"/>
+                                </constraints>
+                                <color key="progressTintColor" systemColor="systemRedColor"/>
+                                <color key="trackTintColor" red="0.94268683230000005" green="0.94268683230000005" blue="0.94268683230000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.9426868323123816" green="0.9426868323123816" blue="0.9426868323123816" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mcA-mQ-ecj" secondAttribute="trailing" id="N6U-o8-qbf"/>
+                            <constraint firstItem="mcA-mQ-ecj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Rye-My-7S8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mcA-mQ-ecj" secondAttribute="trailing" id="eGq-K7-eyd"/>
+                            <constraint firstItem="mcA-mQ-ecj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="j89-QL-0IU"/>
+                            <constraint firstItem="mcA-mQ-ecj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zoy-h9-jTn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="progressBar" destination="mcA-mQ-ecj" id="GJj-I9-pjx"/>
+                        <outlet property="titleLabel" destination="hKo-d3-8lK" id="mbS-wl-Mfg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,5 +82,8 @@
     <resources>
         <image name="boxingglove" width="991" height="998"/>
         <image name="mmagloveicon" width="612" height="612"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
