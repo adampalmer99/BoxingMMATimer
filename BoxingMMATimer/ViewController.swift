@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
+    //@objc is objective c, #selector comes from objective c
     @objc func updateTimer() {
         if secondsRemaining > 0 {
             print("\(secondsRemaining) seconds")
